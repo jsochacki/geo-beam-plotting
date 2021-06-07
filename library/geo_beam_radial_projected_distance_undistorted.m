@@ -14,7 +14,7 @@ eshim = earth_station_heights_m;
 
 alpha = half_beamwidth_in_degrees * (pi / 180);
 
-radmax = asin((Re + eshim) / (Re + h));
+radmax = asin((Re + eshim) / (Re + h)).*0.99999999;
 
 % Prevent imaginary thetas the represent beam coverage beyond the edge of the
 % globe, just represent beams on the visible globe

@@ -3,11 +3,11 @@ clc
 
 addpath('./library');
  
-payload_longitude = -1;
+payload_longitude = 310;
 
 %Beam Centers
-xcenter = [-9.7; -55.7];
-ycenter = [32.9; 34];
+xcenter = [-57.3417; -57.3417];
+ycenter = [32.9; 29.7023];
 
 beam_center = [xcenter, ycenter];
 beam_virtual_earth_station_heights_m = zeros(size(beam_center,1), 1);
@@ -19,7 +19,7 @@ theta = generate_geo_payload_thetas(beam_center, payload_longitude, beam_virtual
 bearings = get_initial_bearing([payload_longitude 0] .* ones(size(beam_center,1),1), beam_center);
 
 boresight_thetas = theta;
-half_beamwidth_in_degrees = 0.42; %0.42 rx and 0.28 tx for 1.1 m antenna
+half_beamwidth_in_degrees = 6; %0.42 rx and 0.28 tx for 1.1 m antenna
 
 [ellipses] ...
          = generate_distorted_geo_beams(boresight_thetas, ...

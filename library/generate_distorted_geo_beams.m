@@ -17,7 +17,7 @@ eshim = earth_station_heights_m;
 s = boresight_thetas * (pi / 180);
 alpha = half_beamwidth_in_degrees * (pi / 180);
 
-radmax = asin((Re + eshim) / (Re + h));
+radmax = asin((Re + eshim) / (Re + h)).*0.99999999;
 thetamax = (180 / pi) * radmax;
 
 sma = (s - alpha);
