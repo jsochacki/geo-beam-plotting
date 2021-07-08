@@ -3,11 +3,11 @@ clc
 
 addpath('./library');
  
-payload_longitude = 310;
+payload_longitude = -1;
 
 %Beam Centers
-xcenter = [-57.3417; -57.3417];
-ycenter = [32.9; 29.7023];
+xcenter = [-9.7; -55.7];
+ycenter = [32.9; 34];
 
 beam_center = [xcenter, ycenter];
 beam_virtual_earth_station_heights_m = zeros(size(beam_center,1), 1);

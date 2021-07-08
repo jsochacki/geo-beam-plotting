@@ -81,8 +81,15 @@ for n = 1:1:size(boresight_thetas,1)
    distance_in_m = [Dfar(n); Dmiddle(n); Dboresight(n); Dnear(n)];
    point = [payload_longitude 0];
    ellipse_points(:, :, n) = get_geo_beam_lat_lon(point, distance_in_m, bearing);
-   ellipse_radii(n) = (sqrt(sum(power(ellipse_points(1,:,n), 2))) ...
-                      - sqrt(sum(power(ellipse_points(4,:,n), 2)))) / 2;
+   
+   local_points = squeeze(ellipse_points(:,:,n));
+   start_point = [local_points(1,1) payload_longitude - local_points(1,2)];
+   end_point = [local_points(4,1) payload_longitude - local_points(4,2)];
+
+   ellipse_radii(n) = (sqrt(sum(power(start_point, 2))) ...
+                      - sqrt(sum(power(end_point, 2)))) / 2;
+%    ellipse_radii(n) = (sqrt(sum(power(ellipse_points(1,:,n), 2))) ...
+%                       - sqrt(sum(power(ellipse_points(4,:,n), 2)))) / 2;
 
    % Make the ellipse
    tempelipse ...
